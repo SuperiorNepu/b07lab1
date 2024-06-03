@@ -1,16 +1,28 @@
 public class Driver {
 	public static void main(String [] args) {
-		Polynomial p = new Polynomial();
-		System.out.println(p.evaluate(3));
-		double [] c1 = {6,0,0,5};
-		Polynomial p1 = new Polynomial(c1);
-		double [] c2 = {0,-2,0,0,-9};
-		Polynomial p2 = new Polynomial(c2);
-		Polynomial s = p1.add(p2);
-		System.out.println("s(0.1) = " + s.evaluate(0.1));
-		if(s.hasRoot(1))
-		System.out.println("1 is a root of s");
-		else
-		System.out.println("1 is not a root of s");
+		
+		Polynomial poly1 = new Polynomial();
+
+       	double[] coefficients = {1.0, 2.0, 3.0};
+        int[] exponents = {0, 1, 2};
+        Polynomial poly2 = new Polynomial(coefficients, exponents);
+
+
+        // Test evaluate method
+        double value = poly2.evaluate(2.0);
+        System.out.println("Evaluation of poly at x=2: " + value);
+
+        // Test hasRoot method
+        boolean hasRoot = poly2.hasRoot(1.0);
+        System.out.println("poly2 has root at x=1: " + hasRoot);
+
+        // Test multiply method
+        Polynomial poly3 = poly2.multiply(poly1);
+
+        // Test saveToFile method
+        String outputFilePath = "outputPolynomial.txt";
+        poly3.saveToFile(outputFilePath);
+        System.out.println("Polynomial saved to file: " + outputFilePath);
+    		
 	}
 }
